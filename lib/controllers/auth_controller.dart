@@ -10,9 +10,10 @@ class AuthController extends GetxController {
   @override
   void onInit() {
   super.onInit();
+  user.value = auth.currentUser;
   user.bindStream(auth.authStateChanges());
 
-  Future.delayed(Duration(milliseconds: 500), () { // ✅ Small delay
+  Future.delayed(Duration(milliseconds: 500), () {
     ever(user, _setInitialScreen);
   });
 }
@@ -35,7 +36,7 @@ class AuthController extends GetxController {
     try {
       await auth.createUserWithEmailAndPassword(email: email, password: password);
       Get.snackbar("Success", "Account created!");
-      Get.offAllNamed('/tasks'); // Navigate to Task Screen after signup
+      Get.offAllNamed('/tasks'); 
     } catch (e) {
       Get.snackbar("Error", e.toString());
     }
@@ -45,7 +46,7 @@ class AuthController extends GetxController {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
       Get.snackbar("Success", "Logged in successfully!");
-      Get.offAllNamed('/tasks'); // Navigate to Task Screen
+      Get.offAllNamed('/tasks');
     } catch (e) {
       Get.snackbar("Error", e.toString());
     }
@@ -53,6 +54,6 @@ class AuthController extends GetxController {
 
   Future<void> logout() async {
     await auth.signOut();
-    Get.offAllNamed('/login'); // Redirect to login screen after logout
+    Get.offAllNamed('/login'); 
   }
 }

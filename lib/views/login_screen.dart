@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // White form section
+           
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),

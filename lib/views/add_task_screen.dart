@@ -22,7 +22,7 @@ class AddTaskScreen extends StatelessWidget {
           SizedBox(height: 10),
           TextField(
             controller: descriptionController,
-            maxLines: 3, // Bigger text box
+            maxLines: 3, 
             decoration: _inputDecoration("Task Description", Icons.description),
           ),
         ],

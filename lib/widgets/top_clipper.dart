@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class TopClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    // Create a curved path with a quadratic Bezier curve.
     Path path = Path();
     path.lineTo(0, size.height - 50);
     path.quadraticBezierTo(

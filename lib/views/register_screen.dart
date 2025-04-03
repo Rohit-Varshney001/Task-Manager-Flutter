@@ -19,7 +19,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
 
-  // Define an accent color (must match the login screen)
   final Color accentColor = Colors.deepPurpleAccent;
 
   @override
@@ -30,7 +29,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Top section with custom clip
             ClipPath(
               clipper: TopClipper(),
               child: Container(
@@ -53,7 +51,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
 
-            // Form section
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
@@ -71,7 +68,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 24),
 
-                  // First Name
                   _buildTextField(
                     controller: firstNameController,
                     label: "First Name",
@@ -79,7 +75,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 16),
 
-                  // Last Name
                   _buildTextField(
                     controller: lastNameController,
                     label: "Last Name",
@@ -87,7 +82,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 16),
 
-                  // Email
                   _buildTextField(
                     controller: emailController,
                     label: "Email",
@@ -96,7 +90,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 16),
 
-                  // Password
                   _buildPasswordField(
                     controller: passwordController,
                     label: "Password",
@@ -109,7 +102,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 16),
 
-                  // Confirm Password
                   _buildPasswordField(
                     controller: confirmPasswordController,
                     label: "Confirm Password",
@@ -122,7 +114,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 24),
 
-                  // Sign Up Button
                   ElevatedButton(
                     onPressed: () {
                       _registerUser();
@@ -138,7 +129,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 16),
 
-                  // Already have an account
                   Center(
                     child: TextButton(
                       onPressed: () => Get.back(),
@@ -157,7 +147,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  /// 🔹 **Helper Function: Build Standard TextField**
   Widget _buildTextField({
     required TextEditingController controller,
     required String label,
@@ -175,7 +164,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  /// 🔹 **Helper Function: Build Password TextField with Toggle**
   Widget _buildPasswordField({
     required TextEditingController controller,
     required String label,
@@ -197,7 +185,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  /// 🔹 **Register User Function**
   void _registerUser() {
     String firstName = firstNameController.text.trim();
     String lastName = lastNameController.text.trim();

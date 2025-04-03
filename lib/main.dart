@@ -5,25 +5,27 @@ import 'controllers/auth_controller.dart';
 import 'firebase_options.dart';
 import 'routes.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-    print("✅ Firebase initialized successfully");
-  } catch (e) {
-    print("❌ Firebase Initialization Error: $e");
-  }
-  runApp(MyApp());
+  
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  
+  final authController = Get.put(AuthController()); 
+  
+  runApp(MyApp(initialRoute: authController.auth.currentUser != null ? '/tasks' : '/login'));
 }
 
 class MyApp extends StatelessWidget {
+  final String initialRoute; 
+
+  MyApp({required this.initialRoute});
+
   @override
   Widget build(BuildContext context) {
-    Get.put(AuthController());  
-
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: initialRoute, 
       getPages: Routes.routes,
     );
   }
